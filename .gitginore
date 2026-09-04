@@ -1,0 +1,12 @@
+# .NET
+test-.net/bin/
+test-.net/obj/
+test-.net/clients.db
+*.user
+
+# Angular / Node
+test_angular/node_modules/
+test_angular/.angular/
+test_angular/.vscode/
+test_angular/file.txt
+test_.net/file.txt

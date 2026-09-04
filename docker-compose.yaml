@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+
+  backend:
+    build:
+      context: ./test-.net
+      dockerfile: Dockerfile
+    container_name: isig_backend
+    ports:
+      - "5065:80"
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Data Source=/app/data/isig.db
+    volumes:
+      - sqlite_data:/app/data
+
+  frontend:
+    build:
+      context: ./test_angular
+      dockerfile: Dockerfile
+    container_name: isig_frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+
+volumes:
+  sqlite_data:
